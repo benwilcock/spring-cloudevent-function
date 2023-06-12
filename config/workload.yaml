@@ -1,10 +1,11 @@
 apiVersion: carto.run/v1alpha1
 kind: Workload
 metadata:
-  name: spring-function
+  name: spring-cloudevent-function
   labels:
     apps.tanzu.vmware.com/workload-type: web
-    app.kubernetes.io/part-of: spring-function
+    apps.tanzu.vmware.com/has-tests: "true"
+    app.kubernetes.io/part-of: spring-cloudevent-function
 spec:
   source:
     git:
@@ -17,3 +18,14 @@ spec:
         value: functions.Handler
       - name: BP_JVM_VERSION
         value: "17"
+  params:
+  - name: annotations
+    value:
+      autoscaling.knative.dev/minScale: "1"
+  - name: testing_pipeline_matching_labels
+    value:
+      apps.tanzu.vmware.com/language: java
+      apps.tanzu.vmware.com/pipeline: test
+  - name: testing_pipeline_params
+    value:
+      source-sub-path: .

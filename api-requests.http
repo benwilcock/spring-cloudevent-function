@@ -1,0 +1,19 @@
+GET http://localhost:8080/models
+
+
+###
+POST http://localhost:8080/v1/chat/completions 
+content-Type: application/json
+
+{
+    "specversion" : "1.0",
+    "type" : "hire",
+    "source" : "https://spring.io/",
+    "id" : "A234-1234-1234",
+    "datacontenttype" : "application/json",
+    "data": {
+        "firstName": "John",
+        "lastName": "Doe"
+    }
+}
+
