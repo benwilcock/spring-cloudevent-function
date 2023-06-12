@@ -1,0 +1,26 @@
+id: 56da7e87-694b-48f7-866f-ddf7527c1059
+timestamp: 2023-06-12T16:03:26Z
+username: ben
+source: VSCODE
+accelerator:
+  name: java-function
+  source:
+    image: eu.gcr.io/tap-shared-instance/tap-packages@sha256:473dba36a09c095fb6713d6ae4f1e5b021923f3ebdbc3b848e707cf90ea14e61
+fragments:
+  - name: build-wrapper-gradle
+    source:
+      image: eu.gcr.io/tap-shared-instance/tap-packages@sha256:5480259d6a29a11f0cc482cd304501d74ccd89dd7207f2d639d6f0d8eedc3bf8
+  - name: build-wrapper-maven
+    source:
+      image: eu.gcr.io/tap-shared-instance/tap-packages@sha256:195a3ca6585fa91c41292584a19c2807c72ecdf986ce860a7147451e89d467d4
+  - name: tap-workload
+    source:
+      image: eu.gcr.io/tap-shared-instance/tap-packages@sha256:dbf0dedb6848ad8a7704c1c19465a1ddae9039b0e63c1dd0df3e2ed9cbda6093
+options:
+  bsGitBranch: main
+  bsGitRepository: github.com?owner=benwilcock&repo=spring-cloudevent-function
+  buildType: maven
+  includeBuildToolWrapper: true
+  includeTap: true
+  interfaceType: cloudevents
+  projectName: spring-function
